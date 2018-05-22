@@ -14,7 +14,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/vulcand/oxy/utils"
+	"github.com/gravitational/oxy/utils"
 )
 
 // ReqRewriter can alter request headers and body

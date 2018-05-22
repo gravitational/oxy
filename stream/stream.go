@@ -41,8 +41,8 @@ import (
 	"io/ioutil"
 	"net/http"
 
+	"github.com/gravitational/oxy/utils"
 	"github.com/mailgun/multibuf"
-	"github.com/vulcand/oxy/utils"
 )
 
 const (

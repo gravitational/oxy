@@ -1,7 +1,7 @@
 package cbreaker
 
 import (
-	"github.com/vulcand/oxy/memmetrics"
+	"github.com/gravitational/oxy/memmetrics"
 	"time"
 
 	. "gopkg.in/check.v1"

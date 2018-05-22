@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/vulcand/oxy/utils"
+	"github.com/gravitational/oxy/utils"
 	"github.com/vulcand/predicate"
 )
 

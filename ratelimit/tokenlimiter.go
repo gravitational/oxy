@@ -7,9 +7,9 @@ import (
 	"sync"
 	"time"
 
+	"github.com/gravitational/oxy/utils"
 	"github.com/mailgun/timetools"
 	"github.com/mailgun/ttlmap"
-	"github.com/vulcand/oxy/utils"
 )
 
 const DefaultCapacity = 65536

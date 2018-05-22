@@ -7,8 +7,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/vulcand/oxy/memmetrics"
-	"github.com/vulcand/oxy/utils"
+	"github.com/gravitational/oxy/memmetrics"
+	"github.com/gravitational/oxy/utils"
 	"github.com/mailgun/timetools"
 )
 

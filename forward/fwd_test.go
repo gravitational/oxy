@@ -10,8 +10,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/vulcand/oxy/testutils"
-	"github.com/vulcand/oxy/utils"
+	"github.com/gravitational/oxy/testutils"
+	"github.com/gravitational/oxy/utils"
 
 	"golang.org/x/net/websocket"
 	. "gopkg.in/check.v1"

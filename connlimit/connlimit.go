@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"sync"
 
-	"github.com/vulcand/oxy/utils"
+	"github.com/gravitational/oxy/utils"
 )
 
 // Limiter tracks concurrent connection per token
