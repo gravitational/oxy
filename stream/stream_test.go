@@ -84,11 +84,11 @@ func (s *STSuite) TestChunkedEncodingSuccess(c *C) {
 
 	conn, err := net.Dial("tcp", testutils.ParseURI(proxy.URL).Host)
 	c.Assert(err, IsNil)
-	fmt.Fprintf(conn, "POST / HTTP/1.0\r\nTransfer-Encoding: chunked\r\n\r\n4\r\ntest\r\n5\r\ntest1\r\n5\r\ntest2\r\n0\r\n\r\n")
+	fmt.Fprintf(conn, "POST / HTTP/1.1\r\nHost: test\r\nTransfer-Encoding: chunked\r\n\r\n0a\r\nBody here\n\r\n09\r\ncontinued\r\n0\r\n\r\n")
 	status, err := bufio.NewReader(conn).ReadString('\n')
 
-	c.Assert(reqBody, Equals, "testtest1test2")
-	c.Assert(status, Equals, "HTTP/1.0 200 OK\r\n")
+	c.Assert(status, Equals, "HTTP/1.1 200 OK\r\n")
+	c.Assert(reqBody, Equals, "Body here\ncontinued")
 	c.Assert(contentLength, Equals, int64(len(reqBody)))
 }
 
@@ -117,10 +117,10 @@ func (s *STSuite) TestChunkedEncodingLimitReached(c *C) {
 
 	conn, err := net.Dial("tcp", testutils.ParseURI(proxy.URL).Host)
 	c.Assert(err, IsNil)
-	fmt.Fprintf(conn, "POST / HTTP/1.0\r\nTransfer-Encoding: chunked\r\n\r\n4\r\ntest\r\n5\r\ntest1\r\n5\r\ntest2\r\n0\r\n\r\n")
+	fmt.Fprintf(conn, "POST / HTTP/1.1\r\nHost: test\r\nTransfer-Encoding: chunked\r\n\r\n4\r\ntest\r\n5\r\ntest1\r\n5\r\ntest2\r\n0\r\n\r\n")
 	status, err := bufio.NewReader(conn).ReadString('\n')
 
-	c.Assert(status, Equals, "HTTP/1.0 413 Request Entity Too Large\r\n")
+	c.Assert(status, Equals, "HTTP/1.1 413 Request Entity Too Large\r\n")
 }
 
 func (s *STSuite) TestRequestLimitReached(c *C) {
